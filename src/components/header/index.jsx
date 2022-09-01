@@ -9,19 +9,19 @@ export default function Header() {
   const [isNavOpen, setIsNavOpen] = useState(false); // initiate isNavOpen state with false
 
   return (
-    <div className="flex items-center justify-around border-t-4 border-purple h-24">
+    <div className="flex items-center justify-between border-t-4 border-purple h-24 px-8 lg:px-16">
       <Link to={'/'}>
-        <img src={logo} alt="logo" />
+        <img src={logo} alt="logo" className="h-10 lg:20"/>
       </Link>
       <nav>
         <section className="MOBILE-MENU flex lg:hidden">
           <div
-            className="HAMBURGER-ICON space-y-2"
+            className="HAMBURGER-ICON absolut top-0 right-0 px-8 py-8"
             onClick={() => setIsNavOpen((prev) => !prev)} // toggle isNavOpen state on click
           >
-            <span className="block h-0.5 w-8 animate-pulse bg-gray-600">-</span>
-            <span className="block h-0.5 w-8 animate-pulse bg-gray-600">-</span>
-            <span className="block h-0.5 w-8 animate-pulse bg-gray-600">-</span>
+            <span class="material-symbols-outlined text-md text-purple md:text-xl">
+              menu
+            </span>
           </div>
 
           <div className={isNavOpen ? "showMenuNav" : "hideMenuNav"}> 
@@ -29,7 +29,10 @@ export default function Header() {
               className="CROSS-ICON absolute top-0 right-0 px-8 py-8"
               onClick={() => setIsNavOpen(false)} // change isNavOpen state to false to close the menu
             >
-              <img src="../../" alt="" />
+              <span class="material-symbols-outlined text-md text-purple md:text-xl">
+                close
+              </span>
+
             </div>
             <ul className="MENU-LINK-MOBILE-OPEN flex flex-col items-center justify-between min-h-[250px]">
               <li className="border-b border-gray-400 my-8 uppercase">
