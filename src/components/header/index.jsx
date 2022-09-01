@@ -22,7 +22,7 @@ export default function Header() {
             onClick={() => setIsNavOpen((prev) => !prev)} // toggle isNavOpen state on click
           >
             <span class="material-symbols-outlined text-md text-purple md:text-xl">
-              menu
+              {isNavOpen? 'close' :  'menu'}
             </span>
           </div>
 
@@ -33,14 +33,11 @@ export default function Header() {
               className="CROSS-ICON absolute  absolut top-0 right-0 px-8 py-8 "
               onClick={() => setIsNavOpen(false)} // change isNavOpen state to false to close the menu
             >
-              {/* <span class="material-symbols-outlined text-md text-purple md:text-xl">
-                close
-              </span> */}
-
             </div>
 
             <ul className="MENU-LINK-MOBILE-OPEN flex flex-col items-center bg-clear-purple w-screen min-h-[1200px]">
-              <li className="border-b pb-4 border-white my-8 uppercase text-white font-montserrat font-bold ">
+              <li className="border-b pb-4 border-white my-8 uppercase text-white font-montserrat font-bold
+               ">
                 <Link to="/">Modo Nocturno</Link>
               </li>
               <li className="border-b border-white my-8 uppercase">
