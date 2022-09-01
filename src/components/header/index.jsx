@@ -2,7 +2,8 @@ import { useState } from "react"; // import state
 import { Link } from "react-router-dom";
 
 // import hamburguerCLose from '../../assets/'
-import createGifoLogo from '../../assets/imgs/button-crear-gifo.svg'
+import createGifoLogo from '../../assets/imgs/button-crear-gifo.svg';
+import logo from '../../assets/imgs/logo-desktop.svg'
 import './index.css'
 
 export default function Header() {
@@ -11,7 +12,7 @@ export default function Header() {
   return (
     <div className="flex items-center justify-around border-b border-gray-400 py-8">
       <Link to={'/'}>
-        <img src="" alt="logo" />
+        <img src={logo} alt="logo" />
       </Link>
       <nav>
         <section className="MOBILE-MENU flex lg:hidden">
@@ -33,7 +34,7 @@ export default function Header() {
             </div>
             <ul className="MENU-LINK-MOBILE-OPEN flex flex-col items-center justify-between min-h-[250px]">
               <li className="border-b border-gray-400 my-8 uppercase">
-                <Link to="/">Modo Diurno</Link>
+                <Link to="/">Modo Nocturno</Link>
               </li>
               <li className="border-b border-gray-400 my-8 uppercase">
                 <Link to='/Favourites'>Favoritos</Link>
@@ -48,18 +49,18 @@ export default function Header() {
           </div>
         </section>
 
-        <ul className="DESKTOP-MENU hidden space-x-8 lg:flex">
+        <ul className="DESKTOP-MENU hidden space-x-6 lg:flex">
           <li>
-            <Link to="/">Modo Nocturno</Link>
+            <Link to="/" className="text-purple text-sm font-montserrat text-montserrat tracking-tight uppercase hover:underline underline-offset-8 decoration-2 decoration-cian ">Modo Nocturno</Link>
           </li>
           <li>
-            <Link to="/Favourites">Favoritos</Link>
+            <Link to="/Favourites" className="text-purple text-sm font-montserrat tracking-tight uppercase hover:underline underline-offset-8 decoration-2 decoration-cian">Favoritos</Link>
           </li>
           <li>
-            <Link to="/MyGifos">Mis Gifos</Link>
+            <Link to="/MyGifos" className="text-purple text-sm font-montserrat tracking-tight uppercase hover:underline underline-offset-8 decoration-2 decoration-cian">Mis Gifos</Link>
           </li>
-          <li>
-            <Link to="/CreateGifo"><img src={createGifoLogo} alt="" /></Link>
+          <li className="border-2 border-purple rounded-full h-14 w-14">
+            <Link to="/CreateGifo" className="text-sm"><img src={createGifoLogo} alt="" /></Link>
           </li>
         </ul>
       </nav>
