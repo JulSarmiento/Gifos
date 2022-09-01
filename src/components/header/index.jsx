@@ -9,7 +9,7 @@ export default function Header() {
   const [isNavOpen, setIsNavOpen] = useState(false); // initiate isNavOpen state with false
 
   return (
-    <div className="flex items-center justify-around border-b border-gray-400 py-8">
+    <div className="flex items-center justify-around border-t-4 border-purple h-24">
       <Link to={'/'}>
         <img src={logo} alt="logo" />
       </Link>
@@ -48,18 +48,18 @@ export default function Header() {
           </div>
         </section>
 
-        <ul className="DESKTOP-MENU hidden space-x-6 lg:flex">
-          <li>
-            <Link to="/" className="text-purple text-sm font-montserrat text-montserrat tracking-tight uppercase hover:underline underline-offset-8 decoration-2 decoration-cian ">Modo Nocturno</Link>
+        <ul className="DESKTOP-MENU hidden space-x-6 lg:flex align-middle">
+          <li className="h-auto grid place-content-center">
+            <Link to="/" className="text-purple text-sm font-montserrat font-bold text-montserrat tracking-normal uppercase hover:underline underline-offset-8 decoration-2 decoration-cian ">Modo Nocturno</Link>
           </li>
-          <li>
-            <Link to="/Favourites" className="text-purple text-sm font-montserrat tracking-tight uppercase hover:underline underline-offset-8 decoration-2 decoration-cian">Favoritos</Link>
+          <li className="h-auto grid place-content-center">
+            <Link to="/Favourites" className="text-purple text-sm font-montserrat font-bold tracking-normal uppercase hover:underline underline-offset-8 decoration-2 decoration-cian">Favoritos</Link>
           </li>
-          <li>
-            <Link to="/MyGifos" className="text-purple text-sm font-montserrat tracking-tight uppercase hover:underline underline-offset-8 decoration-2 decoration-cian">Mis Gifos</Link>
+          <li className="h-auto grid place-content-center">
+            <Link to="/MyGifos" className="text-purple text-sm font-montserrat font-bold tracking-normal uppercase hover:underline underline-offset-8 decoration-2 decoration-cian">Mis Gifos</Link>
           </li>
-          <li className=" ">
-            <Link to="/CreateGifo" className=" border-2 border-purple rounded-full grid h-14 w-14 place-content-center hover:bg-purple "><p className="text-xl text-purple hover:text-white">+</p></Link>
+          <li className="h-auto grid place-content-center">
+            <Link to="/CreateGifo" ><p className=" text-xl grid place-content-center text-purple border-2 border-purple rounded-full h-14 w-14 hover:text-white hover:bg-purple"><span class="material-symbols-outlined">add</span></p></Link>
           </li>
         </ul>
       </nav>
