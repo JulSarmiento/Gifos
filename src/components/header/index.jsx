@@ -2,7 +2,6 @@ import { useState } from "react"; // import state
 import { Link } from "react-router-dom";
 
 // import hamburguerCLose from '../../assets/'
-import createGifoLogo from '../../assets/imgs/button-crear-gifo.svg';
 import logo from '../../assets/imgs/logo-desktop.svg'
 import './index.css'
 
@@ -59,8 +58,8 @@ export default function Header() {
           <li>
             <Link to="/MyGifos" className="text-purple text-sm font-montserrat tracking-tight uppercase hover:underline underline-offset-8 decoration-2 decoration-cian">Mis Gifos</Link>
           </li>
-          <li className="border-2 border-purple rounded-full h-14 w-14">
-            <Link to="/CreateGifo" className="text-sm"><img src={createGifoLogo} alt="" /></Link>
+          <li className=" ">
+            <Link to="/CreateGifo" className=" border-2 border-purple rounded-full grid h-14 w-14 place-content-center hover:bg-purple "><p className="text-xl text-purple hover:text-white">+</p></Link>
           </li>
         </ul>
       </nav>

@@ -11,12 +11,15 @@ module.exports = {
       'cian' : '#50E3C2 ',
       'dark-gray' : '#37383C',
       'light-black' : '#222326',
-      'black': '#000000'
+      'black': '#000000',
+      'white' : '#fff',
     },
+
     fontFamily: {
       montserrat : ['Montserrat', 'sans-serif'],
       roboto : ['Roboto', 'sans-serif']
     },
+
     fontSize: {
       'xs' : '13px',
       'sm' : '16px',
@@ -24,6 +27,7 @@ module.exports = {
       'lg' : '25px',
       'xl' : '35px'
     }
+    
   },
   plugins: [
 
