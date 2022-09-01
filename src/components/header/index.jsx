@@ -14,7 +14,9 @@ export default function Header() {
         <img src={logo} alt="logo" className="h-10 lg:20"/>
       </Link>
       <nav>
-        <section className="MOBILE-MENU flex lg:hidden">
+        <section className="MOBILE-MENU flex lg:hidden ">
+
+          {/* Open Icon */}
           <div
             className="HAMBURGER-ICON absolut top-0 right-0 px-8 py-8"
             onClick={() => setIsNavOpen((prev) => !prev)} // toggle isNavOpen state on click
@@ -25,27 +27,27 @@ export default function Header() {
           </div>
 
           <div className={isNavOpen ? "showMenuNav" : "hideMenuNav"}> 
+
+          {/* Close Icon */}
             <div
-              className="CROSS-ICON absolute top-0 right-0 px-8 py-8"
+              className="CROSS-ICON absolute  absolut top-0 right-0 px-8 py-8 "
               onClick={() => setIsNavOpen(false)} // change isNavOpen state to false to close the menu
             >
-              <span class="material-symbols-outlined text-md text-purple md:text-xl">
+              {/* <span class="material-symbols-outlined text-md text-purple md:text-xl">
                 close
-              </span>
+              </span> */}
 
             </div>
-            <ul className="MENU-LINK-MOBILE-OPEN flex flex-col items-center justify-between min-h-[250px]">
-              <li className="border-b border-gray-400 my-8 uppercase">
+
+            <ul className="MENU-LINK-MOBILE-OPEN flex flex-col items-center bg-clear-purple w-screen min-h-[1200px]">
+              <li className="border-b pb-4 border-white my-8 uppercase text-white font-montserrat font-bold ">
                 <Link to="/">Modo Nocturno</Link>
               </li>
-              <li className="border-b border-gray-400 my-8 uppercase">
+              <li className="border-b border-white my-8 uppercase">
                 <Link to='/Favourites'>Favoritos</Link>
               </li>
               <li className="border-b border-gray-400 my-8 uppercase">
                 <Link to='/MyGIfos'>Mis Gifos</Link>
-              </li>
-              <li className="border-b border-gray-400 my-8 uppercase">
-                <Link to='/CreateGifo'>Crear Gifo</Link>
               </li>
             </ul>
           </div>
