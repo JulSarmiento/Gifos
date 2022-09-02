@@ -9,7 +9,7 @@ export default function Header() {
   const [isNavOpen, setIsNavOpen] = useState(false); // initiate isNavOpen state with false
 
   return (
-    <div className="flex items-center justify-between border-t-4 border-purple h-24 px-8 lg:px-16">
+    <div className="flex items-center justify-between border-t-4 border-purple h-24 px-8 lg:px-28">
       <Link to={'/'}>
         <img src={logo} alt="logo" className="h-10 lg:20"/>
       </Link>

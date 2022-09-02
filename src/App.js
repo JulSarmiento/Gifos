@@ -12,6 +12,7 @@ import MyGifos from './views/MyGifos'
 import NoPageFound from './views/NoPageFound'
 
 import Header from './components/header';
+import Footer from './components/footer';
 import './App.css';
 
 
@@ -34,6 +35,8 @@ function App() {
         <Route path="*" element={<NoPageFound/>} />
 
       </Routes>
+
+      <Footer />
 
     </Router>
 
