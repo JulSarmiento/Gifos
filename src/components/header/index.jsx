@@ -38,7 +38,7 @@ export default function Header() {
             <ul className="MENU-LINK-MOBILE-OPEN flex flex-col items-center bg-clear-purple w-screen min-h-[1200px]">
               
               <li className="flex flex-col my-8 uppercase text-white font-montserrat font-bold">
-                <Link to="/">Modo Nocturno</Link>
+                <Link to="/" >Modo Nocturno</Link>
                 <span className="mx-auto border-b pb-4 border-white w-10"> </span>
               </li>
               <li className="flex flex-col my-8 uppercase text-white font-montserrat font-bold">
