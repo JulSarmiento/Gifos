@@ -6,7 +6,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 
 export default function Footer() {
   return (
-    <footer className="fixed bottom-0 h-48 w-screen border-b-4 border-purple lg:flex justify-center items-center">
+    <footer className="h-48 w-screen border-b-4 border-purple lg:flex justify-center items-center">
 
       <div className="flex flex-col items-center mx-0 text-sm lg:flex-row justify-between lg:mx-32 items-center w-screen">
 

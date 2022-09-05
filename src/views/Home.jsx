@@ -1,22 +1,33 @@
 import React from "react";
 import ResultsContainer from "../components/resultsContainer"
 import homeImage from "../assets/imgs/ilustra_header.svg"
-
+import Trending from "../components/trending";
+import TrendingGifos from "../components/trendingGifos";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center ">
       <h1 className="mx-14 text-center font-bold text-purple font-montserrat text-llg mb-16">Inspirate, busca, guarda, y crea los mejores <span className="text-cian">GIFOS</span></h1>
 
-      <div>
+      <div className="mb-8">
         <img className="h-36" src={homeImage} alt="" />
         <div className="border rounded-3xl border-purple h-12 flex justify-center align-center items-center">
-          <input className="outline-0" type="text" id="search-input" name="search-input"/>
+          <input className="outline-0" type="text" id="search-input" name="search-input" placeholder="Busca GIFOS y ms"/>
           <button><span className="text-purple material-symbols-outlined ">search</span></button> 
         </div>
       </div>
 
-      <ResultsContainer/>
+      <div className="mb-10">
+        <Trending />
+      </div>
+        
+      <div  className="mb-10 mx-16">
+        <ResultsContainer/>
+      </div>
+
+      <div className="mb-10">
+        <TrendingGifos/>
+      </div>
     </div>
   )
 }
