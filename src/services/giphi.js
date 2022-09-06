@@ -13,3 +13,11 @@ export const getTrendyGifos = async () => {
 }
 
 
+// Provisional
+export const randomGifo = async () => {
+  const res = await fetch(`${Config.URL}gifs/random?api_key=${Config.APIKEY}`);
+  const json = await res.json();
+  return json
+}
+
+
