@@ -13,14 +13,13 @@ function Trending() {
     })
   }, [])
 
-  
   return (
     <div className="text-center" >
-      <h1 className="text-center font-montserrat text-md font-bold text-purple">Trending:</h1>
-      <ul className="flex flex-wrap justify-center mb-6">
-        {trending.map(item => <li className="font-montserrat font-medium text-xs text-purple tracking-tighter leading-6 mx-2"  key={item}><a href="/">{capitalizeFirstLetter(item)},</a></li>)}
+      <h1 className="text-center font-montserrat text-md font-bold text-purple dark:text-white">Trending:</h1>
+      <ul className="flex flex-wrap justify-center mb-6 ">
+        {trending.map(item => <li key={item}><a className="font-montserrat font-medium text-xs text-purple tracking-tighter leading-4 mx-2 dark:text-white" href="/">{capitalizeFirstLetter(item)},</a></li>)}
       </ul>
-      <span className="text-medium-gray">_______________________</span>
+      {/* <span className="text-medium-gray dark:text-white">_______________________</span> */}
     </div>
   )
 }
