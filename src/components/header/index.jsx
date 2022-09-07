@@ -26,7 +26,7 @@ export default function Header() {
             className="HAMBURGER-ICON absolut top-0 right-0 px-8 py-8"
             onClick={() => setIsNavOpen((prev) => !prev)} // toggle isNavOpen state on click
           >
-            <span class="material-symbols-outlined text-md text-purple md:text-xl dark:text-white">
+            <span className="material-symbols-outlined text-md text-purple md:text-xl dark:text-white">
               {isNavOpen? 'close' :  'menu'}
             </span>
           </div>
