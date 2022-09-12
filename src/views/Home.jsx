@@ -3,6 +3,7 @@ import ResultsContainer from "../components/resultsContainer"
 import homeImage from "../assets/imgs/ilustra_header.svg"
 import Trending from "../components/trending";
 import TrendingGifos from "../components/trendingGifos";
+import SearchBar from "../components/searchBar";
 
 export default function Home() {
   return (
@@ -12,8 +13,7 @@ export default function Home() {
       <div className="mb-8">
         <img className="h-36 h-[130px] w-[273px] lg:h-[190px] lg:w-[399px]" src={homeImage} alt="" />
         <div className="border rounded-3xl border-purple h-12 flex justify-center align-center items-center dark:border-white">
-          <input className="outline-0 dark:bg-dark-gray" type="text" id="search-input" name="search-input" placeholder="Busca GIFOS y ms"/>
-          <button><span className="text-purple material-symbols-outlined dark:text-white ">search</span></button> 
+          <SearchBar/>
         </div>
       </div>
 
