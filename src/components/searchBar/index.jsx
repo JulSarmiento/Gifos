@@ -46,7 +46,7 @@ function SearchBar(){
         <button type="submit" onClick={handleSubmit} ><span className="text-purple material-symbols-outlined dark:text-white ">search</span></button> 
       </div>
       <div>
-
+        
       </div>
     </div>
   )
