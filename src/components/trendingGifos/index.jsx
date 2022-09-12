@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { getTrendyGifos } from "../../services/giphi";
+import GifoCard from "../gifoCard";
 
 function TrendingGifos() {
   const [tendryGifos, setTrendingGifos] = useState([]);
@@ -21,7 +22,7 @@ function TrendingGifos() {
   }, []);
 
   return (
-    <div className="text-center bg-light-gray py-8 lg:px-24 dark:bg-light-black ">
+    <div className="text-center bg-light-gray py-8 lg:px-[94px] dark:bg-light-black ">
       <div className="mt-4 mb-18 dark:text-white">
         <h2 className="font-montserrat font-bold text-purple text-md mb-2 dark:text-white">Trending GIFOS</h2>
         <p className="font-roboto font-medium text-sm leading-4 ">Mira los ultimos</p>
@@ -31,8 +32,8 @@ function TrendingGifos() {
       <div className="flex flex-row items-center gap-2 p-8">
         <span className="material-symbols-outlined hidden lg:grid h-[40px] w-[40px] pl-2 place-content-center text-purple border border-purple hover:text-white hover:bg-purple dark:text-white dark:border-white hover:dark:bg-white hover:dark:text-light-black " onClick={slideLeft}> arrow_back_ios </span>
 
-        <div ref={slider} className=" relative flex items-center overflow-x-scroll scroll-smooth scrollbar-hide">
-          {tendryGifos.map((item) =>  <img className=" mr-8 w-[243px] h-[187px] inline-block cursor-pointer hover:scale-105 ease-in-out duration-300" key={item.id} src={item.images.downsized.url} alt={item.title} /> )}
+        <div ref={slider} className=" gap-4 relative flex items-center overflow-x-scroll scroll-smooth scrollbar-hide">
+          {tendryGifos.map((gif) => <GifoCard key={gif.title} gif={gif} smH={'187px'} smW={'243px'} lgH={'275px'} lgW={'357px'} xlH={'275px'} xlW={'357px'} />)}
         </div>
 
         <span className="material-symbols-outlined hidden lg:grid h-[40px] w-[40px] p-1 place-content-center text-purple border border-purple hover:text-white hover:bg-purple dark:text-white dark:border-white hover:dark:bg-white hover:dark:text-light-black" onClick={slideRight}> arrow_forward_ios </span>

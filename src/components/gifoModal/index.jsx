@@ -26,11 +26,11 @@ export default function GifoModal({onClose, gif}) {
             </div>
             {/*body*/}
             <div className="relative m-auto h-auto flex flex-col">
-              <img className="sm:h-[245px] sm:w-[316px] lg:h-[400px] lg:w-[695px]" src={gif.images?.downsized?.url} alt={gif.title} />
+              <img className="sm:h-[245px] sm:w-[316px] lg:h-[400px] lg:w-[695px] xl:h-[500px] xl:w-[795px]" src={gif.images?.downsized?.url} alt={gif.title} />
               <div className="flex gap-2 mt-2 items-center justify-between">
-                <div>
+                <div className="text-left">
                   <p className="font-roboto text-sm capitalize">{gif.username}</p>
-                  <p className="font-montserrat font-bold text-sm capitalize w-[150px]">{gif.title}</p>
+                  <p className="font-montserrat font-bold text-sm capitalize w-[150px] lg:w-[400px]">{gif.title}</p>
                 </div>
 
                 <div className="flex justify-between border-purple align-middle gap-4">

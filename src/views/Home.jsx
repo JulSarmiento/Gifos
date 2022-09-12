@@ -25,7 +25,7 @@ export default function Home() {
         <ResultsContainer/>
       </div>
 
-      <div className="mb-10">
+      <div className="mb-10 w-full">
         <TrendingGifos/>
       </div>
     </div>
