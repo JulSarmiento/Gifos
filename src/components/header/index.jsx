@@ -14,7 +14,7 @@ export default function Header() {
   const [theme, setTheme] = useContext(ThemeContext);
 
   return (
-    <div className="flex items-center justify-between border-t-4 border-purple h-24 px-8 lg:px-28 bg-white dark:bg-dark-gray ">
+    <div className="flex items-center justify-between border-t-4 border-purple h-24 px-8 lg:px-28 bg-white dark:bg-dark-gray dark:border-black">
       <Link to={'/'}>
         {theme === 'dark'? <img src={logoDark} alt="logo" className="h-10 lg:20"/> :  <img src={logo} alt="logo" className="h-10 lg:20"/>}
       </Link>
@@ -23,7 +23,7 @@ export default function Header() {
 
           {/* Open Icon */}
           <div
-            className="HAMBURGER-ICON absolut top-0 right-0 px-8 py-8"
+            className="HAMBURGER-ICON absolut top-0 right-0 px-4 py-8"
             onClick={() => setIsNavOpen((prev) => !prev)} // toggle isNavOpen state on click
           >
             <span className="material-symbols-outlined text-md text-purple md:text-xl dark:text-white">
@@ -40,7 +40,7 @@ export default function Header() {
             >
             </div>
 
-            <ul className="MENU-LINK-MOBILE-OPEN flex flex-col items-center bg-clear-purple my-1 w-screen min-h-[1200px]">
+            <ul className="MENU-LINK-MOBILE-OPEN flex flex-col items-center bg-clear-purple my-1 w-screen min-h-[1200px] dark:bg-black">
               
               <li className="flex flex-col mt-8 mb-2 uppercase text-white font-montserrat font-bold">
                 {theme === 'dark' ? (

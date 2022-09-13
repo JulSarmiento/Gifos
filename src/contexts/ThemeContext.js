@@ -19,6 +19,8 @@ const getInitialTheme = () => {
 
 export const ThemeContext = React.createContext();
 
+
+// Provider
 export const ThemeProvider = ({ initialTheme, children }) => {
     const [theme, setTheme] = React.useState(getInitialTheme);
 

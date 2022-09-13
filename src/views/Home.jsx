@@ -7,7 +7,7 @@ import SearchBar from "../components/searchBar";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center bg-white dark:bg-dark-gray  lg:pt-[113px]">
+    <div className="flex flex-col items-center bg-white dark:bg-dark-gray  lg:pt-[113px] overflow-hidden">
       <h1 className="mx-14 text-center font-bold text-purple font-montserrat text-llg mb-16 dark:text-white">Inspirate, busca, guarda, y crea los mejores <span className="text-cian">GIFOS</span></h1>
 
       <div className="mb-8">
@@ -21,7 +21,7 @@ export default function Home() {
         <Trending />
       </div>
         
-      <div  className="mb-10 mx-16">
+      <div className="mb-10">
         <ResultsContainer/>
       </div>
 

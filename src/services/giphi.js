@@ -27,3 +27,10 @@ export const getSuggestions = async (term) => {
   const json = await res.json();
   return json
 }
+
+// search 
+export const getSearch = async (term) => {
+  const res = await fetch(`${Config.URL}gifs/search?api_key=${Config.APIKEY}&q=${term}&limit=12`);
+  const json = await res.json();
+  return json
+}
