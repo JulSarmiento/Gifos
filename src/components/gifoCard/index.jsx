@@ -2,7 +2,9 @@ import React, { useState} from "react"
 import { saveAs } from "file-saver";
 import GifoModal from "../gifoModal";
 
-export default function GifoCard({gif, smH, smW, lgH, lgW, xlH, xlW}) {
+// smH={187} smW={243} lgH={275} lgW={357} xlH={275} xlW={357}
+function GifoCard({gif, sizes}) {
+
   const [showModal, setShowModal] = useState(false);
 
   const download = (img, title) => {
@@ -13,10 +15,10 @@ export default function GifoCard({gif, smH, smW, lgH, lgW, xlH, xlW}) {
   }
 
    return (
-    <div className={`group relative sm:h-[${smH}] sm:w-[${smW}] lg:h-[${lgH}] lg:w-[${lgW}] xl:h-[${xlH}] xl:w-[${xlW}]`}>
+    <div className="group relative">
 
-      <div className={`sm:h-[${smH}] sm:w-[${smW}] lg:h-[${lgH}] lg:w-[${lgW}] xl:h-[${xlH}] xl:w-[${xlW}]`}>
-        <img onClick={() => setShowModal(true)} className={`sm:h-[${smH}] sm:w-[${smW}] lg:h-[${lgH}] lg:w-[${lgW}] xl:h-[${xlH}] xl:w-[${xlW}]`} src={gif.images?.downsized?.url} alt={gif.title} />
+      <div className={sizes}>
+        <img onClick={() => setShowModal(true)} className={sizes} src={gif.images?.downsized?.url} alt={gif.title} />
       </div>      
 
       <div class="absolute  top-0 left-0 w-full h-0 flex flex-row justify-between text-left items-start  bg-clear-purple opacity-0 lg:group-hover:h-full lg:group-hover:opacity-100 duration-500">
@@ -36,6 +38,9 @@ export default function GifoCard({gif, smH, smW, lgH, lgW, xlH, xlW}) {
   )
 }
 
+GifoCard.defaultProps = {
+
+}
 
 
-
+export default GifoCard;
