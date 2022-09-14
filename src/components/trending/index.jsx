@@ -25,9 +25,8 @@ function Trending() {
     <div className="text-center mx-6" >
       <h1 className="text-center font-montserrat text-md font-bold text-purple dark:text-white">Trending:</h1>
       <ul className="flex flex-wrap justify-center mb-6 ">
-        {trending.map(item => <li key={item}><p onClick={() => {handlerOnClick(item)}} className="font-montserrat font-medium text-xs text-purple tracking-tighter leading-4 mx-2 dark:text-white"  href="/">{capitalizeFirstLetter(item)},</p></li>)}
+        {trending.map(item => <li key={item}><p onClick={() => {handlerOnClick(item)}} className="font-montserrat font-medium text-xs text-purple tracking-tighter leading-4 mx-2 dark:text-white" >{capitalizeFirstLetter(item)},</p></li>)}
       </ul>
-      {/* <span className="text-medium-gray dark:text-white">_______________________</span> */}
     </div>
   )
 }

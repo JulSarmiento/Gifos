@@ -22,8 +22,8 @@ export const getAutocomplete = async (tag) => {
 }
 
 // search 
-export const getSearch = async (term) => {
-  const res = await fetch(`${Config.URL}gifs/search?api_key=${Config.APIKEY}&q=${term}&limit=12`);
+export const getSearch = async (term, offset = 0) => {
+  const res = await fetch(`${Config.URL}gifs/search?api_key=${Config.APIKEY}&q=${term}&limit=12&offset=${offset}`);
   const json = await res.json();
   return json
 }
