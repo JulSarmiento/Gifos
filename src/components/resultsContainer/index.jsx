@@ -13,16 +13,16 @@ function ResultsContainer() {
   const [results, setResults ] = useState([]);
   const [offset, setOffset] = useState(12)
   let   [num, setNum] = useState(1)
-  const [page, setPage] = useState([])
+  // const [page, setPage] = useState([])
 
 
   const printPagination = () => {
     setNum(pagination.total_count / 12)
   }
 
-  const getPagination = () => {
+  // const getPagination = () => {
     
-  }
+  // }
 
   const handlerOnClick = (num) => {
     setOffset(offset + num)
