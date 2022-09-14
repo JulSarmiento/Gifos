@@ -21,13 +21,6 @@ export const getAutocomplete = async (tag) => {
   return json
 }
 
-// search suggestions 
-export const getSuggestions = async (term) => {
-  const res = await fetch(`${Config.URL}tags/related/${term}?api_key=${Config.APIKEY}`);
-  const json = await res.json();
-  return json
-}
-
 // search 
 export const getSearch = async (term) => {
   const res = await fetch(`${Config.URL}gifs/search?api_key=${Config.APIKEY}&q=${term}&limit=12`);

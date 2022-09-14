@@ -12,7 +12,7 @@ export default function Home() {
 
       <div className="mb-8">
         <img className="h-36 h-[130px] w-[273px] lg:h-[190px] lg:w-[399px]" src={homeImage} alt="" />
-        <div className="border rounded-3xl border-purple h-12 flex justify-center align-center items-center dark:border-white">
+        <div className="border rounded-3xl border-purple flex justify-center items-center dark:border-white">
           <SearchBar/>
         </div>
       </div>
