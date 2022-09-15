@@ -3,7 +3,7 @@ import { useState } from "react";
 import TopicToSearch from "../../contexts/SearchContext";
 import { getSearch } from "../../services/giphi";
 import GifoCard from "../gifoCard";
-
+import noResultImg from "../../assets/imgs/icon-busqueda-sin-resultado.svg"
 // pendiente paginacion porque no tengo idea de que hacer ahi
 
 function ResultsContainer() {
@@ -17,7 +17,7 @@ function ResultsContainer() {
 
 
   const printPagination = () => {
-    setNum(pagination.total_count / 12)
+    setNum(pagination.total_count / pagination.offset)
   }
 
   // const getPagination = () => {
@@ -43,24 +43,32 @@ function ResultsContainer() {
   },[topic]);
 
   console.log('pagination', pagination)
+  console.log('results', results)
   console.log('topic in search box', topic)
   console.log('num', num)
 
   return(
     <div>
       {
-        results.length === 0 ?
+        topic === '' ?
           ''
           :
+          results.length === 0 ?
+            <di className="border border-t border-0 border-medium-gray flex flex-col justify-center mb- ">
+              <h1 className="font-montserrat font-bold text-purple text-llg  mb-[109px]">{topic}</h1>
+              <img src={noResultImg} alt="No hay resultados para tu busqueda" />
+              <p>Intenta con otra busqueda</p>
+            </di>
+            :
             <div>
               <div>
                 <div className="border border-t border-0 border-medium-gray w-[157px] mb-[43px] m-auto"></div>
                 <h1 className=" capitalize text-purple font-montserrat font-bold text-lg text-center mb-[38px] dark:text-white">{topic}</h1>
                 <div>
                   <div className="grid grid-cols-2 gap-4  lg:grid-cols-3 xl:grid-cols-4">
-                    {topic === null ? 
+                    {topic === '' ? 
                       '':
-                      results.map((result => <GifoCard key={result.id} gif={result} sizes={"sm:h-[120px] sm:w-[158px] lg:h-[200px] lg:w-[260px] xl:h-[200px] xl:w-[260px]"} />))
+                      results.map((result => <GifoCard key={result.id} gif={result} sizes={"sm:h-[120px] sm:w-[158px] lg:h-[200px] lg:w-[260px] xl:h-[200px] xl:w-[260px] bg-loading"} />))
                     }
                   </div>
                   <div className="flex justify-center mt-[78px] mb-[35px]">

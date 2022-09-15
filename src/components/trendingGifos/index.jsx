@@ -33,7 +33,7 @@ function TrendingGifos() {
         <span className="material-symbols-outlined hidden lg:grid h-[40px] w-[40px] pl-2 place-content-center text-purple border border-purple hover:text-white hover:bg-purple dark:text-white dark:border-white hover:dark:bg-white hover:dark:text-light-black " onClick={slideLeft}> arrow_back_ios </span>
 
         <div ref={slider} className=" gap-4 relative flex items-center overflow-x-scroll scroll-smooth scrollbar-hide">
-          {tendryGifos.map((gif) => <GifoCard key={gif.id} gif={gif} sizes={"sm:h-[187px] sm:w-[243px] lg:h-[275px] lg:w-[357px] xl:h-[275}px] xl:w-[357px]"} />)}
+          {tendryGifos.map((gif) => <GifoCard key={gif.id} gif={gif} sizes={"sm:h-[187px] sm:w-[243px] lg:h-[275px] lg:w-[357px] xl:h-[275}px] xl:w-[357px] bg-loading"} />)}
         </div>
 
         <span className="material-symbols-outlined hidden lg:grid h-[40px] w-[40px] p-1 place-content-center text-purple border border-purple hover:text-white hover:bg-purple dark:text-white dark:border-white hover:dark:bg-white hover:dark:text-light-black" onClick={slideRight}> arrow_forward_ios </span>

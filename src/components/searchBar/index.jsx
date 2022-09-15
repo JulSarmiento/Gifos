@@ -13,7 +13,7 @@ function SearchBar(){
 
   const handleClose = () => {
     setAutoComplete([]);
-    setTopic(inputRef.current.value = null)
+    setTopic(inputRef.current.value = '')
   }
 
   /**
@@ -40,6 +40,10 @@ function SearchBar(){
     setTopic(inputRef.current.value)
   }
 
+  /**
+   * Autocomplete event
+   * @param {string} item 
+   */
   const handlerAutocomplete = (item) => {
     setTopic(item)
   }
@@ -55,33 +59,33 @@ function SearchBar(){
           <div className="flex gap-2">
             {
               autoComplete.length !== 0 ?
-              <button type="submit"  className="flex items-center justify-center align-middle" ><span className="text-md text-purple material-symbols-outlined dark:text-white ">search</span></button>
+              <button type="submit"  className="flex items-center justify-center align-middle cursor-pointer" ><span className="text-md text-purple material-symbols-outlined dark:text-white ">search</span></button>
               :
               ''
             }
             <input 
               onChange={handlerOnChange} 
               ref={inputRef}
-              className="outline-0 dark:bg-dark-gray dark:text-white dark:placeholder:text-white" 
+              className="outline-0 dark:bg-dark-gray dark:text-white dark:placeholder:text-white w-[251px] lg:w-[450px]" 
               type="text" 
               id="topic" 
               name="topic" 
-              placeholder="Busca GIFOS y mas" />
-
-            </div>
+              placeholder="Busca GIFOS y mas"
+              autoComplete="off" />
+          </div>
 
             {
               autoComplete.length !== 0 ?
-                <button onClick={handleClose} className="flex items-center justify-center align-middle justify-self-end" ><span className="text-md text-purple material-symbols-outlined dark:text-white ">close</span></button>
+                <button onClick={handleClose} className="flex items-center justify-center align-middle justify-self-end cursor-pointer" ><span className="text-md text-purple material-symbols-outlined dark:text-white ">close</span></button>
                 :
-                <button type="submit"  className="flex items-center justify-center align-middle justify-self-end" ><span className="text-md text-purple material-symbols-outlined dark:text-white ">search</span></button>
+                <button type="submit"  className="flex items-center justify-center align-middle justify-self-end cursor-pointer" ><span className="text-md text-purple material-symbols-outlined dark:text-white ">search</span></button>
             }
         </div>
         
       </form>
       {autoComplete.length === 0? "" : 
         <ul className="border-t border-medium-gray w-full py-2 " >
-          {!autoComplete? "" : autoComplete.slice(1).map((item) => <li onClick={() => handlerAutocomplete(item.name)} className=" flex items-center flex-row gap-2 text-medium-gray py-1" key={item.name} ><span className="text-md text-medium-gray material-symbols-outlined dark:text-white ">search</span> {item.name}</li>)}
+          {!autoComplete? "" : autoComplete.slice(1).map((item) => <li onClick={() => handlerAutocomplete(item.name)} className=" flex items-center flex-row gap-2 text-medium-gray py-1 cursor-pointer" key={item.name} ><span className="text-md text-medium-gray material-symbols-outlined dark:text-white ">search</span> {item.name}</li>)}
         </ul>
       }
 

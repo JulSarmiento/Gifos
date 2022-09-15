@@ -48,6 +48,9 @@ module.exports = {
 
       '2xl': '1536px',
       // => @media (min-width: 1536px) { ... }
+    },
+    backgroundImage: {
+      'loading': "url('https://i.pinimg.com/originals/ea/b7/e1/eab7e1120c9dd628d3bb39a20a94927d.gif')",
     }
   },
   plugins: [
