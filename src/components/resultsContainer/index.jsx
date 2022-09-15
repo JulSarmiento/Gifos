@@ -54,10 +54,10 @@ function ResultsContainer() {
           ''
           :
           results.length === 0 ?
-            <di className="border border-t border-0 border-medium-gray flex flex-col justify-center mb- ">
-              <h1 className="font-montserrat font-bold text-purple text-llg  mb-[109px]">{topic}</h1>
-              <img src={noResultImg} alt="No hay resultados para tu busqueda" />
-              <p>Intenta con otra busqueda</p>
+            <di className="border border-t border-0 border-medium-gray text-center flex flex-col justify-center mb-[84px] ">
+              <h1 className="font-montserrat font-bold text-purple text-md lg:text-lg dark:text-white mb-[109px] mt-[84px]">{topic}</h1>
+              <img src={noResultImg} className="h-[150px] w-[150px] mx-auto mb-[20px]" alt="No hay resultados para tu busqueda" />
+              <p className="font-montserrat font-bold text-cian text-sm lg:text-md">Intenta con otra busqueda</p>
             </di>
             :
             <div>

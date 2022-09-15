@@ -11,9 +11,9 @@ function SearchBar(){
 
   const inputRef = useRef('');
 
-  const handleClose = () => {
-    setAutoComplete([]);
-    setTopic(inputRef.current.value = '')
+  const handleClose = (e) => {
+    e.preventDefault();
+    setAutoComplete([]);  
   }
 
   /**
@@ -45,7 +45,8 @@ function SearchBar(){
    * @param {string} item 
    */
   const handlerAutocomplete = (item) => {
-    setTopic(item)
+    setTopic(item);
+    setAutoComplete([]);
   }
 
   console.log('autocomplete', autoComplete)
@@ -53,20 +54,20 @@ function SearchBar(){
 
   return (
     <div className="min-h-[50px] w-full px-[23px] flex flex-col justify-center">
-      <form onSubmit={handleSubmit} className="h-[40px] w-full p-2 ">
+      <form className="h-[40px] w-full p-2 ">
 
         <div className="flex items-center justify-between align-middle ">
           <div className="flex gap-2">
             {
               autoComplete.length !== 0 ?
-              <button type="submit"  className="flex items-center justify-center align-middle cursor-pointer" ><span className="text-md text-purple material-symbols-outlined dark:text-white ">search</span></button>
+              <button onClick={handleSubmit}  className="flex items-center justify-center align-middle cursor-pointer" ><span className="text-md text-purple material-symbols-outlined dark:text-white ">search</span></button>
               :
               ''
             }
             <input 
               onChange={handlerOnChange} 
               ref={inputRef}
-              className="outline-0 dark:bg-dark-gray dark:text-white dark:placeholder:text-white w-[251px] lg:w-[450px]" 
+              className="outline-0 dark:bg-dark-gray dark:text-white dark:placeholder:text-white w-[241px] lg:w-[450px]" 
               type="text" 
               id="topic" 
               name="topic" 
@@ -84,7 +85,7 @@ function SearchBar(){
         
       </form>
       {autoComplete.length === 0? "" : 
-        <ul className="border-t border-medium-gray w-full py-2 " >
+        <ul className="border-t border-medium-gray w-auto py-2 " >
           {!autoComplete? "" : autoComplete.slice(1).map((item) => <li onClick={() => handlerAutocomplete(item.name)} className=" flex items-center flex-row gap-2 text-medium-gray py-1 cursor-pointer" key={item.name} ><span className="text-md text-medium-gray material-symbols-outlined dark:text-white ">search</span> {item.name}</li>)}
         </ul>
       }
