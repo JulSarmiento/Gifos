@@ -4,7 +4,7 @@ import TopicToSearch from "../../contexts/SearchContext";
 
 function SearchBar(){
   // topics context
-  const [topic, setTopic] = useContext(TopicToSearch);
+  const [, setTopic] = useContext(TopicToSearch);
 
   // This is the autocomplete state
   const [autoComplete, setAutoComplete] = useState([]);
@@ -48,9 +48,6 @@ function SearchBar(){
     setTopic(item);
     setAutoComplete([]);
   }
-
-  console.log('autocomplete', autoComplete)
-  console.log('Topic to search' , topic)
 
   return (
     <div className="min-h-[50px] w-full px-[23px] flex flex-col justify-center">
