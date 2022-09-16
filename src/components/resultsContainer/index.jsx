@@ -11,13 +11,13 @@ function ResultsContainer() {
 
   const [pagination, setPagination] = useState({});
   const [topic] = useContext(TopicToSearch);
-  const [results, setResults ] = useState([]);
+  const [results, setResults] = useState([]);
   let [offset, setOffset] = useState(12);
 
-  const onClick = (chilData) =>  {   
+  const onClick = (chilData) => {
 
     setOffset(offset);
-    getSearch(topic, offset *= chilData).then(({data, pagination}) => {
+    getSearch(topic, offset *= chilData).then(({ data, pagination }) => {
       setResults(data);
       setPagination(pagination);
     })
@@ -26,14 +26,14 @@ function ResultsContainer() {
   console.log(pagination)
 
   useEffect(() => {
-    getSearch(topic).then(({data, pagination}) => {
+    getSearch(topic).then(({ data, pagination }) => {
       setResults(data);
       setPagination(pagination);
       setOffset(12)
     })
-  },[topic]);
+  }, [topic]);
 
-  return(
+  return (
     <div>
       {
         topic === '' ?
@@ -52,14 +52,14 @@ function ResultsContainer() {
                 <h1 className=" capitalize text-purple font-montserrat font-bold text-lg text-center mb-[38px] dark:text-white">{topic}</h1>
                 <div>
                   <div className="grid grid-cols-2 gap-4  lg:grid-cols-3 xl:grid-cols-4">
-                    {topic === '' ? 
-                      '':
+                    {topic === '' ?
+                      '' :
                       results.map((result => <GifoCard key={result.id} gif={result} sizes={"sm:h-[120px] sm:w-[158px] lg:h-[200px] lg:w-[260px] xl:h-[200px] xl:w-[260px] bg-loading"} />))
                     }
                   </div>
                   {/* paginacion */}
                   <div className="mt-[24px]">
-                    <Pagination onAddNumber={onClick}/>
+                    <Pagination onAddNumber={onClick} />
                   </div>
                 </div>
               </div>

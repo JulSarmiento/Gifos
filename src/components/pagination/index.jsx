@@ -1,7 +1,7 @@
 import React from "react";
 
-function Pagination({ onAddNumber}) {
-  const numArray = [1,2,3,4,5]
+function Pagination({ onAddNumber }) {
+  const numArray = [1, 2, 3, 4, 5]
 
   console.log(numArray)
 
