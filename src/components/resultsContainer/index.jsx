@@ -12,12 +12,10 @@ function ResultsContainer() {
   const [pagination, setPagination] = useState({});
   const [topic] = useContext(TopicToSearch);
   const [results, setResults] = useState([]);
-  let [offset, setOffset] = useState(12);
 
-  const onClick = (chilData) => {
-
-    setOffset(offset);
-    getSearch(topic, offset *= chilData).then(({ data, pagination }) => {
+  const onClick = (offset) => {
+    console.log('offset from child', offset)
+    getSearch(topic, offset).then(({ data, pagination }) => {
       setResults(data);
       setPagination(pagination);
     })
@@ -29,7 +27,6 @@ function ResultsContainer() {
     getSearch(topic).then(({ data, pagination }) => {
       setResults(data);
       setPagination(pagination);
-      setOffset(12)
     })
   }, [topic]);
 
@@ -59,7 +56,7 @@ function ResultsContainer() {
                   </div>
                   {/* paginacion */}
                   <div className="mt-[24px]">
-                    <Pagination onAddNumber={onClick} />
+                    <Pagination pagination={pagination} onAddNumber={onClick} />
                   </div>
                 </div>
               </div>
