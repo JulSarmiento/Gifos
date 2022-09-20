@@ -1,11 +1,34 @@
-import React, { useState} from "react"
+import React, { useContext, useState} from "react"
 import { saveAs } from "file-saver";
 import GifoModal from "../gifoModal";
+import FavoriteGifos from "../../contexts/FavoritesContext";
 
-// smH={187} smW={243} lgH={275} lgW={357} xlH={275} xlW={357}
+
 function GifoCard({gif, sizes}) {
 
+  const [gifos, setGifos] = useContext(FavoriteGifos);
+  // const [favorite, setFavorite] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  
+  const ifExist = (gifId) =>  gifos.findIndex(gifo => gifo.id === gifId );
+
+  const removeGif = (gifId) => {
+      gifos.splice(gifId, 1);
+      setGifos([...gifos, gif])
+  }
+
+  // Add gifos to localstorage
+  const setFavoriteGifo = (gif) => {
+    // setFavorite(true);
+    const index = ifExist(gif.id)
+    if(index < 0){
+      setGifos([...gifos, gif]);
+    } else{
+      console.log('El gifo ya se guardo. Eliminando', gifos.splice(index, 1))
+      removeGif(index)
+    }
+    
+  }
 
   const download = (img, title) => {
     saveAs(
@@ -27,19 +50,15 @@ function GifoCard({gif, sizes}) {
           <p className="font-roboto font-bold text-md text-white capitalize">{gif.title}</p>
         </div>
         <div className="flex gap-2 pt-2 pr-2">
-          <button className="bg-clear-gray grid place-content-center h-[32px] w-[32px] rounded-[6px] hover:bg-light-gray" ><span class="material-symbols-outlined">favorite</span></button>
+          <button onClick={() => setFavoriteGifo(gif)} className="bg-clear-gray grid place-content-center h-[32px] w-[32px] rounded-[6px] hover:bg-light-gray" ><span class="material-symbols-outlined">favorite</span></button>
           <button id="downloadBtn" download onClick={() => download(gif.images?.downsized?.url, gif.title)} className="bg-clear-gray grid place-content-center h-[32px] w-[32px] rounded-[6px] hover:bg-light-gray" ><span class="material-symbols-outlined">file_download</span></button>
           <button onClick={() => setShowModal(true)} className="bg-clear-gray grid place-content-center h-[32px] w-[32px] rounded-[6px] hover:bg-light-gray" ><span class="material-symbols-outlined">open_in_full</span></button>
         </div>
       </div>
-      
+
       {showModal? <GifoModal gif={gif} onClose={() => setShowModal(false)}/> : ''}
     </div>
   )
-}
-
-GifoCard.defaultProps = {
-
 }
 
 

@@ -16,32 +16,35 @@ import Footer from './components/footer';
 import './App.css';
 import { ThemeProvider } from './contexts/ThemeContext';
 import TopicToSearchProvider from './providers/SearchProvider';
+import FavoruritesProvider from './providers/FavoritesProvider';
 
 
 function App() {
   return (
     <ThemeProvider>
       <TopicToSearchProvider>
-        <Router>
-          <Header />
-          
-          <Routes>
+        <FavoruritesProvider>
+          <Router>
+            <Header />
+            
+            <Routes>
 
-            <Route exact path='/' element={<Home/>}/>
+              <Route exact path='/' element={<Home/>}/>
 
-            <Route exact path='/CreateGifo' element={<CreateGifo/>}/>
+              <Route exact path='/CreateGifo' element={<CreateGifo/>}/>
 
-            <Route exact path='/Favourites' element={<Favourites/>}/>
+              <Route exact path='/Favourites' element={<Favourites/>}/>
 
-            <Route exact path='/MyGIfos' element={<MyGifos/>}/>
+              <Route exact path='/MyGIfos' element={<MyGifos/>}/>
 
-            <Route path="*" element={<NoPageFound/>} />
+              <Route path="*" element={<NoPageFound/>} />
 
-          </Routes>
+            </Routes>
 
-          <Footer />
+            <Footer />
 
-        </Router>
+          </Router>
+        </FavoruritesProvider>
       </TopicToSearchProvider>
     </ThemeProvider>
 

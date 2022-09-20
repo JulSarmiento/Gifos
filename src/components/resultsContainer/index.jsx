@@ -1,16 +1,14 @@
-import React, { useContext, useEffect } from "react";
-import { useState } from "react";
+import React, { useState , useContext, useEffect } from "react";
 import TopicToSearch from "../../contexts/SearchContext";
 import { getSearch } from "../../services/giphi";
 import GifoCard from "../gifoCard";
 import noResultImg from "../../assets/imgs/icon-busqueda-sin-resultado.svg"
 import Pagination from "../pagination";
-// pendiente paginacion porque no tengo idea de que hacer ahi
 
 function ResultsContainer() {
 
-  const [pagination, setPagination] = useState({});
   const [topic] = useContext(TopicToSearch);
+  const [pagination, setPagination] = useState({});  
   const [results, setResults] = useState([]);
 
   const onClick = (offset) => {
