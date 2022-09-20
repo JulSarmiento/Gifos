@@ -18,7 +18,8 @@ const FavoruritesProvider = ({children}) => {
   return(
     <FavoriteGifos.Provider value={[
       gifos,
-      setGifos
+      setGifos,
+
     ]}
     >
       {children}
