@@ -11,7 +11,7 @@ function Pagination({ onAddNumber, pagination }) {
           ''
           :
           <span
-            onClick={() => onAddNumber(pagination.count)}
+            onClick={() => onAddNumber(pagination.offset === 0 ? 0 : pagination.offset - 12)}
             className="material-symbols-outlined">
             arrow_back_ios
           </span>
@@ -32,7 +32,7 @@ function Pagination({ onAddNumber, pagination }) {
           ''
           :
           <span
-            onClick={() => onAddNumber(pagination.offset * 5)}
+            onClick={() => onAddNumber(pagination.offset + 12)}
             className="material-symbols-outlined">
             arrow_forward_ios
           </span>
