@@ -1,8 +1,22 @@
-import React from "react";
+import React, {useEffect, useState, useContext} from "react";
 import { saveAs } from "file-saver";
-
+import FavoriteGifos from "../../contexts/FavoritesContext";
+import activeFav from "../../assets/imgs/icon-fav-active.svg"
+import hoverFav from "../../assets/imgs/icon-fav-hover.svg"
 
 export default function GifoModal({onClose, gif}) {
+  const {setFavoriteGifo, isInFavs} = useContext(FavoriteGifos);
+  const [fav, setFav] = useState(hoverFav);
+
+  useEffect(() => {
+
+    if(isInFavs(gif.id) < 0){
+      setFav(hoverFav)
+      
+    } else {
+      setFav(activeFav)
+    }
+  }, [isInFavs, gif])
 
   const download = (img, title) => {
     saveAs(
@@ -34,7 +48,9 @@ export default function GifoModal({onClose, gif}) {
                 </div>
 
                 <div className="flex justify-between border-purple align-middle gap-4">
-                  <button className="grid place-content-center h-[32px] w-[32px] rounded-[6px] text-purple dark:text-cian" ><span className="material-symbols-outlined hover:text-clear-purple ">favorite</span></button>
+                  <button onClick={() => setFavoriteGifo(gif)} className="grid place-content-center h-[32px] w-[32px] rounded-[6px] text-purple dark:text-cian" >
+                    <img src={fav} alt="active favorite"/>
+                  </button>
                   <button className="grid place-content-center h-[32px] w-[32px] rounded-[6px] text-purple border border-purple hover:text-clear-purple hover:border-clear-purple dark:text-cian dark:border-cian" id="downloadBtn" download onClick={() => download(gif.images?.downsized?.url, gif.title)} ><span class="material-symbols-outlined">file_download</span></button>
                 </div>
               </div>

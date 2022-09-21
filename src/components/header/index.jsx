@@ -99,7 +99,7 @@ export default function Header() {
             <Link to="/MyGifos" className="text-purple text-sm font-montserrat font-bold tracking-normal uppercase hover:underline underline-offset-8 decoration-2 decoration-cian dark:text-white">Mis Gifos</Link>
           </li>
           <li className="h-auto grid place-content-center">
-            <Link to="/CreateGifo" ><p className=" text-xl grid place-content-center text-purple border-2 border-purple rounded-full h-14 w-14 hover:text-white hover:bg-purple dark:text-white dark:border-white hover:dark:bg-white hover:dark:text-dark-gray"><span class="material-symbols-outlined">add</span></p></Link>
+            <Link to="/CreateGifo" ><p className=" text-xl grid place-content-center text-purple border-2 border-purple rounded-full h-14 w-14 hover:text-white hover:bg-purple dark:text-white dark:border-white hover:dark:bg-white hover:dark:text-dark-gray"><span className="material-symbols-outlined">add</span></p></Link>
           </li>
         </ul>
       </nav>

@@ -9,7 +9,7 @@ import noFavs from "../assets/imgs/icon-mis-gifos-sin-contenido.svg"
 
 function Favourites(){
 
-  const [gifos] = useContext(FavoriteGifos);
+  const {gifos} = useContext(FavoriteGifos);
 
   return (
     
