@@ -40,11 +40,11 @@ function GifoCard({ gif, sizes }) {
       </div>
 
       <div className="absolute  top-0 left-0 w-full h-0 flex flex-row justify-between text-left items-start  bg-clear-purple opacity-0 lg:group-hover:h-full lg:group-hover:opacity-100 duration-500">
-        <div className="self-end ml-[18.5px] mb-[51px]">
-          <p className="text-white grid font-roboto font-regular text-sm capitalize" >{gif.username}</p>
-          <p className="font-roboto font-bold text-md text-white capitalize">{gif.title}</p>
+        <div className="self-end ml-[10px] pb-2 ">
+          <p className="text-white grid font-roboto font-regular text-[15px] capitalize" >{gif.username}</p>
+          <p className="font-roboto font-bold text-[16px] text-white capitalize w-[243px]">{gif.title}</p>
         </div>
-        <div className="flex gap-2 pt-2 pr-2">
+        <div className="flex gap-2 pt-2 pr-2 ml-[-200px] z-10">
           <button onClick={() => setFavoriteGifo(gif)} className="bg-clear-gray grid place-content-center h-[32px] w-[32px] rounded-[6px] hover:bg-light-gray" >
             <img src={fav} alt="active favorite"/>
           </button>
@@ -64,55 +64,3 @@ function GifoCard({ gif, sizes }) {
 
 export default GifoCard;
 
-
-// /**
-//  * This function validate if the gif to be added as favourite exist or dont.
-//  * @param {number} gifId 
-//  * @returns and ID
-//  */
-// const ifExist = useCallback((gifId) => gifos.findIndex(gifo => gifo.id === gifId), [gifos]);
-
-// useEffect(() => {
-
-//   if(ifExist(gif.id) < 0){
-//     setFav(hoverFav)
-    
-//   } else {
-//     setFav(activeFav)
-//   }
-// }, [gif, ifExist])
-
-
-// /**
-//  * This function delete the gif sended and set the new array to the localstorage
-//  * @param {number} gifId 
-//  */
-// const removeGif = (gifId) => {
-//   const filtered = gifos.filter(item => item.id !== gifId);
-//   setGifos(filtered);
-//   // setFavourite(false)
-
-// }
-
-// /**
-//  * This function add a new object to the favourites array and update the localstorage
-//  * @param {object} gif 
-//  */
-// const addFavourite = (gif) => {
-//   setGifos([...gifos, gif]);
-  
-// }
-
-// /**
-//  * This function validate and decide if save a new gif o remove it
-//  * @param {object} gif 
-//  */
-// const setFavoriteGifo = (gif) => {
-//   const index = ifExist(gif.id)
-
-//   if (index < 0) {
-//     addFavourite(gif);
-//   } else {
-//     removeGif(gif.id)
-//   }
-// }

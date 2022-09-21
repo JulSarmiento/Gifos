@@ -51,7 +51,7 @@ export default function GifoModal({onClose, gif}) {
                   <button onClick={() => setFavoriteGifo(gif)} className="grid place-content-center h-[32px] w-[32px] rounded-[6px] text-purple dark:text-cian" >
                     <img src={fav} alt="active favorite"/>
                   </button>
-                  <button className="grid place-content-center h-[32px] w-[32px] rounded-[6px] text-purple border border-purple hover:text-clear-purple hover:border-clear-purple dark:text-cian dark:border-cian" id="downloadBtn" download onClick={() => download(gif.images?.downsized?.url, gif.title)} ><span class="material-symbols-outlined">file_download</span></button>
+                  <button className="grid place-content-center h-[32px] w-[32px] rounded-[6px] text-purple border border-purple hover:text-clear-purple hover:border-clear-purple dark:text-cian dark:border-cian" id="downloadBtn" download onClick={() => download(gif.images?.downsized?.url, gif.title)} ><span className="material-symbols-outlined">file_download</span></button>
                 </div>
               </div>
 
