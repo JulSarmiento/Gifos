@@ -13,10 +13,10 @@ function Favourites(){
 
   return (
     
-    <div className="overflow-hidden bg-white dark:bg-dark-gray pt-[11px] overflow-hidden">
-      <div className="flex flex-col justify-center w-screen align-middle text-center mx-auto ">
+    <div className="overflow-hidden bg-white dark:bg-dark-gray overflow-hidden">
+      <div className="flex flex-col justify-center w-screen align-middle text-center mx-auto pt-[11px]">
         <img className="h-[28px]" src={favoriteLogo} alt="Logo de corazon para imagen de favoritos" />
-        <h1 className="font-montserrat font-bold text-purple text-[20px] mt-[7px] lg:text-lg">Favoritos</h1>
+        <h1 className="font-montserrat font-bold text-purple text-[20px] mt-[7px] lg:text-lg dark:text-cian">Favoritos</h1>
       </div>
 
 
