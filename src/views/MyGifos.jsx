@@ -1,19 +1,11 @@
 import React from "react";
-// import { useEffect } from "react";
-// import { useCallback } from "react";
-// import { useState } from "react";
+
 import myGifos from "../assets/imgs/icon-mis-gifos.svg"
 import noMyGifos from "../assets/imgs/icon-mis-gifos-sin-contenido.svg"
 
 
 function MyGifos() {
-  // const [gifos, setGifos] = useState(JSON.parse(localStorage.getItem('myGifos') || []));
 
-  // const isCreated = useCallback((gifId) => gifos.findIndex( gif => gif.id === gifId), [gifos]);
-
-  // useEffect(() => {
-  //   localStorage.setItem('myGifos', JSON.stringify(gifos));
-  // }, [gifos]);
 
   return (
     <div className=" overflow-hidden pt-[11px] bg-white dark:bg-dark-gray dark:text-cian">
