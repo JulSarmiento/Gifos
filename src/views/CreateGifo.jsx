@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useEffect } from "react";
+import React, { useContext,  useState } from "react";
 import { ThemeContext } from "../contexts/ThemeContext";
 
 import camaraIcon from "../assets/imgs/element-camara.svg"
@@ -9,79 +9,24 @@ import tape2 from "../assets/imgs/element_cinta2.svg"
 import ligth from "../assets/imgs/element-luz-camara.svg"
 import movie from "../assets/imgs/pelicula.svg"
 import movieDark from "../assets/imgs/pelicula-modo-noc.svg"
-import { useState } from "react";
+import StepOne from "../components/steps/stepOne";
+import StepTwo from "../components/steps/stepTwo";
+import StepThree from "../components/steps/StepThree";
+import StepCero from "../components/steps/stepCero";
+import StartBtn from "../components/buttons/startBtn";
+import RecordBtn from "../components/buttons/recordBtn";
+import UploadBtn from "../components/buttons/uploadBtn";
+import FinishBtn from "../components/buttons/finishBtn";
 
-
-
-const stepOne = () => {
-  console.log('holis en paso 1');
-
-  return (
-    <div>
-      <div className="text-lg font-montserrat font-bold text-purple dark:text-cian">
-        <p>Nos das acceso </p>
-        <p>a tu camara?</p>
-      </div>
-
-      <div className="text-[16px] font-roboto font-semibold dark:text-white">
-        <p>El acceso a tu camara sera valido solo</p>
-        <p>por el tiempo en el que estes creando el GIFO</p>
-      </div>
-    </div>
-  )
-};
-
-const stepTwo = () => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const videoRef = useRef();
-  
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  useEffect(() => {
-
-    navigator.mediaDevices.getUserMedia({
-      audio: false,
-      video: {
-        height: 480
-      }
-    }).then(stream => {
-      videoRef.current.srcObject = stream;
-      videoRef.current.play();
-    }).catch(console.error);
-  }, [])
-
-  return (
-    <div>
-      <video id="video-recorder" ref={videoRef}></video>
-    </div>
-  )
-};
-
-const stepThree = () => {
-  console.log('holis en paso 3')
-};
 
 function CreateGifo() {
-  const steps = [stepOne, stepTwo, stepThree]
+  const steps = [<StepCero/> ,<StepOne/>, <StepTwo/>, <StepThree/>]
+  const buttons = [<StartBtn/>,  <RecordBtn/>, <FinishBtn/>, <UploadBtn/>];
   const [theme] = useContext(ThemeContext);
+  const [btn, setBtn] = useState(0);
   const [step, setStep] = useState(0);
 
-  const getStreamAndReacord = async () => {
-
-
-
-    
-  }
-
-
-
-
-
-
-
-
-
-
-
+  console.log(btn)
 
   return (
     <div className="w-screen bg-white dark:bg-dark-gray flex flex-col justify-center pt-6">
@@ -113,18 +58,7 @@ function CreateGifo() {
             </div>
 
             <div className="w-[592px] h-[292px] grid place-content-center mx-auto text-center">
-              <div className="text-lg font-montserrat font-bold text-purple dark:text-cian">
-                <p>Aqui podrás</p>
-                <p>crear tus propios <span className="text-cian dark:text-white">GIFOS</span></p>
-              </div>
-
-              <div className="text-[16px] font-roboto font-semibold dark:text-white">
-                <p>Crea tu GIFO en solo 3 pasos!</p>
-                <p>(solo necesitas una camara para grabar un video)</p>
-              </div>
-              {/* {
-                steps[step]
-              } */}
+              { steps[step] }
             </div>
 
             <div className="grid grid-cols-[1fr_594px_1fr]">
@@ -145,15 +79,32 @@ function CreateGifo() {
 
       <div className="mx-auto mt-[-44px]">
         <div className="flex gap-8">
-          <button onClick={() => setStep(0)} className="border border-1 font-bold rounded-full h-[32px] w-[32px] border-purple text-purple font-roboto text-[18px] text-center hover:bg-purple hover:text-white active:bg-purple active:text-white    dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-black dark:active:bg-white dark:active:text-black ">1</button>
-          <button onClick={() => setStep(1)} className="border border-1 font-bold rounded-full h-[32px] w-[32px] border-purple text-purple font-roboto text-[18px] text-center hover:bg-purple hover:text-white active:bg-purple active:text-white    dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-black dark:active:bg-white dark:active:text-black ">2</button>
-          <button onClick={() => setStep(2)} className="border border-1 font-bold rounded-full h-[32px] w-[32px] border-purple text-purple font-roboto text-[18px] text-center hover:bg-purple hover:text-white active:bg-purple active:text-white    dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-black dark:active:bg-white dark:active:text-black ">3</button>
+          <button onClick={() => {
+            setStep(1);
+            setBtn(1);
+            }} className="border border-1 font-bold rounded-full h-[32px] w-[32px] border-purple text-purple font-roboto text-[18px] text-center hover:bg-purple hover:text-white active:bg-purple active:text-white    dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-black dark:active:bg-white dark:active:text-black ">1</button>
+          <button onClick={() => {
+            setStep(2);
+            setBtn(2);
+            }} className="border border-1 font-bold rounded-full h-[32px] w-[32px] border-purple text-purple font-roboto text-[18px] text-center hover:bg-purple hover:text-white active:bg-purple active:text-white    dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-black dark:active:bg-white dark:active:text-black ">2</button>
+          <button onClick={() => {
+            setStep(3);
+            setBtn(3);
+          }} className="border border-1 font-bold rounded-full h-[32px] w-[32px] border-purple text-purple font-roboto text-[18px] text-center hover:bg-purple hover:text-white active:bg-purple active:text-white    dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-black dark:active:bg-white dark:active:text-black ">3</button>
         </div>
+
+        {
+          btn === 2 ?
+          <p>Repetir captura</p> 
+          :
+          ''
+        }
       </div>
 
       <div className="mx-auto mt-[25px] w-[796px] border-b border-4 text-purple dark:text-cian "></div>
 
-      <button className="mx-auto my-[24px] border rounded-3xl w-[127px] h-[50px] border-1 font-montserrat font-bold text-xs text-purple hover:bg-purple hover:text-white active:bg-purple active:text-white    dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-black dark:active:bg-white dark:active:text-black">COMENZAR</button>
+      {buttons[0 || btn]}
+
     </div>
 
 
