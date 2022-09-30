@@ -1,22 +1,42 @@
-import React, {useRef, useEffect} from "react";
+import React, {useRef, useEffect, useState} from "react";
+import RecordRTC, { invokeSaveAsDialog } from 'recordrtc';
+
 
 function StepTwo () {
 
+  const [stream, setStream] = useState(null);
+  const [blob, setBlob] = useState(null);
   const videoRef = useRef();
-  
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  useEffect(() => {
+  const recordRef = useRef();
 
-    navigator.mediaDevices.getUserMedia({
+  const handlerRecording = async () => {
+    const mediaStream = await navigator.mediaDevices.getDisplayMedia({
       audio: false,
       video: {
         width: 480
       }
-    }).then(stream => {
-      videoRef.current.srcObject = stream;
-      videoRef.current.play();
-    }).catch(console.error);
-  }, [])
+    });
+
+    setStream(mediaStream);
+    recordRef.current = new RecordRTC(mediaStream, {type : 'gif'});
+    recordRef.current.startRecording();
+  }
+
+  const handlerStop = () => {
+    recordRef.current.stopRecording(() => {
+      setBlob(recordRef.current.getBlob());
+    });
+  }
+
+  const handlerSave = () => {
+    invokeSaveAsDialog(blob);
+  }
+
+  useEffect(() => {
+    if(!videoRef.current) {
+      return
+    }
+  }, [stream, videoRef]);
 
   return (
     <div>

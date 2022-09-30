@@ -53,10 +53,11 @@ function GifoCard({ gif, sizes }) {
         </div>
       </div>
 
-      {showModal ? <GifoModal gif={gif}
-      
-      
-      onClose={() => setShowModal(false)} /> : ''}
+      {showModal ? 
+        <GifoModal gif={gif} onClose={() => setShowModal(false)} /> 
+      : 
+        ''
+      }
     </div>
   )
 }

@@ -1,5 +1,6 @@
-import React, { useContext,  useState } from "react";
+import React, { useContext,  useState, Component } from "react";
 import { ThemeContext } from "../contexts/ThemeContext";
+import Chronomether from "../components/chronometer";
 
 import camaraIcon from "../assets/imgs/element-camara.svg"
 import tape1Dark from "../assets/imgs/element_cinta1-modo-noc.svg"
@@ -13,18 +14,26 @@ import StepOne from "../components/steps/stepOne";
 import StepTwo from "../components/steps/stepTwo";
 import StepThree from "../components/steps/StepThree";
 import StepCero from "../components/steps/stepCero";
-import StartBtn from "../components/buttons/startBtn";
-import RecordBtn from "../components/buttons/recordBtn";
-import UploadBtn from "../components/buttons/uploadBtn";
-import FinishBtn from "../components/buttons/finishBtn";
+
+const mapper = {
+  "0" : "COMENZAR",
+  "1" : "",
+  "2" : "GRABAR",
+  "3" : "FINALIZAR",
+  "4" : "SUBIR GIFO",
+  "5" : ""
+}
 
 
 function CreateGifo() {
-  const steps = [<StepCero/> ,<StepOne/>, <StepTwo/>, <StepThree/>]
-  const buttons = [<StartBtn/>,  <RecordBtn/>, <FinishBtn/>, <UploadBtn/>];
+  const dataStarted = new Date().getTime()
   const [theme] = useContext(ThemeContext);
   const [btn, setBtn] = useState(0);
   const [step, setStep] = useState(0);
+  const steps = [<StepCero setStep={setStep}/> ,<StepOne/>, <StepTwo/>, <StepThree/>]
+  // const buttons = [<StartBtn/>, '' ,  <RecordBtn/>, <FinishBtn/>, <UploadBtn/>];
+
+
 
   console.log(btn)
 
@@ -77,7 +86,8 @@ function CreateGifo() {
 
       {/* Grid box END*/}
 
-      <div className="mx-auto mt-[-44px]">
+      <div className="flex justify-between w-[680px] mx-auto mt-[-44px]">
+        <div className="w-[150px]"></div>
         <div className="flex gap-8">
           <button onClick={() => {
             setStep(1);
@@ -94,19 +104,40 @@ function CreateGifo() {
         </div>
 
         {
-          btn === 2 ?
-          <p>Repetir captura</p> 
+
+          btn === 1 || btn === 0 ?
+            <div className="w-[150px]"/>
           :
-          ''
+
+            btn === 2 ?
+              <Chronomether secs={(new Date().getTime() - dataStarted) / 1000}/>
+            :
+              
+              btn === 3 ?
+
+              <p className="text-purple text-[15px] font-montserrat font-bold tracking-normal uppercase hover:underline underline-offset-8 decoration-2 decoration-cian dark:text-white">Repetir captura</p> 
+              :
+              ''
         }
       </div>
 
       <div className="mx-auto mt-[25px] w-[796px] border-b border-4 text-purple dark:text-cian "></div>
 
-      {buttons[0 || btn]}
+
+
+      {
+        btn === 1 ?
+        ''
+        :
+        <button
+          onClick={() => setStep(1)}
+          className="mx-auto my-[24px] border rounded-3xl w-[127px] h-[50px] border-1 font-montserrat font-bold text-xs text-purple hover:bg-purple hover:text-white active:bg-purple active:text-white    dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-black dark:active:bg-white dark:active:text-black"
+        >
+          {mapper[step]}
+        </button>
+      }
 
     </div>
-
 
   )
 }
