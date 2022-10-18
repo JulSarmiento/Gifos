@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useCallback, useEffect } from "react";
 import RecordContext from "../contexts/recordContext";
 import { postGifo } from "../services/giphi";
 
@@ -6,9 +6,33 @@ const RecordProvider = ({ children }) => {
   const record = useRef();
   const [isRecording, setIsRecording] = useState(true);
   const [blob, setblob] = useState(null);
-  // const [myGifs, setMyGifs] = useState(JSON.parse(localStorage.getItem('myGifs') || '[]'));
+  const [myGifs, setMyGifs] = useState(JSON.parse(localStorage.getItem('myGifs') || '[]'));
 
+  // PAGINA DE MIS GIFOS
+  const isInMyGifos = useCallback((gifId) => myGifs.findIndex(gif => gif.id === gifId), [myGifs]);
+
+  useEffect(() => {
+    localStorage.setItem('myGifs', JSON.stringify(myGifs))
+  },[myGifs]);
+
+  const addGif = (gif) => setMyGifs([...myGifs, gif]);
+
+  const removeGif = (gifId) => {
+    const filtered = myGifs.filter(item => item.id !== gifId);
+    setMyGifs(filtered);
+  };
+
+  const setMyGifsInArray = (gif) => {
+    const index = isInMyGifos(gif.id);
+
+    if(index >= 0) {
+      removeGif(gif.id)
+    } else {
+      addGif(gif);
+    }
+  }
   
+  // FIN DE PAGINA DE MIS GIFOS
 
   const gifo = useRef({ link: null });
 
@@ -47,6 +71,8 @@ const RecordProvider = ({ children }) => {
         stopRecord,
         saveRecord,
         gifo,
+        setMyGifsInArray,
+        isInMyGifos
       }}
     >
       {children}

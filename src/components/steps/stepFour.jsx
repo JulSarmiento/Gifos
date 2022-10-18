@@ -14,8 +14,6 @@ function StepFour() {
     invokeSaveAsDialog(blob, `${blob.type}.gif`);
   }
 
-  
-
   return (
     <div className="z-1000">
       <div className="h-[320px] w-[480px] bg-clear-purple relative">
