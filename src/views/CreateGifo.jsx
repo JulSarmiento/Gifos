@@ -19,7 +19,7 @@ import ReCapture from "../components/reCapture";
 import StepFour from "../components/steps/stepFour";
 
 function CreateGifo() {
-  const { startRecord, stopRecord, saveRecord } = useContext(RecordContext);
+  const { startRecord, stopRecord, saveRecord, gifo } = useContext(RecordContext);
   const [theme] = useContext(ThemeContext);
   const [step, setStep] = useState(0);
 
@@ -36,13 +36,17 @@ function CreateGifo() {
   const saveAndUpLoad = async () => {
     setStep(5);
     console.log("Guardando y subiendo gifo");
-    try{
-      const response = await saveRecord();
-      console.log('response', response);
+    try {
+      const { data } = await saveRecord();
+      console.log('response', data);
+      gifo.current = {
+        id: data.id,
+        link: `https://media.giphy.com/media/${data.id}/giphy.gif`
+      };
       setStep(6);
-      return response.data.id
     }
-    catch (err){
+    catch (err) {
+      console.error(err);
       console.log('Archivo no se pudo subir');
     }
   };
@@ -94,7 +98,7 @@ function CreateGifo() {
       textBtn: "SUBIR GIFO",
       step: 2,
       onClick: saveAndUpLoad,
-      textoAdiconal: <ReCapture onClick={onReCapture}/>,
+      textoAdiconal: <ReCapture onClick={onReCapture} />,
       component: <StepTwo />
     },
     {
@@ -102,14 +106,14 @@ function CreateGifo() {
       step: 3,
       onClick: null,
       textoAdiconal: null,
-      component: <StepThree/>
+      component: <StepThree />
     },
     {
       textBtn: "",
       step: 3,
       onClick: null,
       textoAdiconal: null,
-      component: <StepFour/>
+      component: <StepFour />
     },
   ];
 

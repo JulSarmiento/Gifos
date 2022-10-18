@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
+import { invokeSaveAsDialog } from "recordrtc"
 import check from "../../assets/imgs/check.svg"
-import {invokeSaveAsDialog} from "recordrtc"
+import RecordContext from "../../contexts/recordContext";
 
-// No se si me toque hacer una peticion para buscar el gifo y posteriormente consguir el url y descargarlo.
-function StepFour ({img, title}) {
 
-  async function downloadGif(gifImg, gifName) {
-    let blob = await fetch(gifImg).then((img) => img.blob());
-    invokeSaveAsDialog(blob, gifName + ".gif");
+function StepFour() {
+  const { gifo } = useContext(RecordContext);
+  const { link } = gifo.current;
+
+  async function downloadGif() {
+    const blob = await fetch(link).then((img) => img.blob());
+    console.log("Blob is", blob);
+    invokeSaveAsDialog(blob, `${blob.type}.gif`);
   }
+
+  
 
   return (
     <div className="z-1000">
@@ -16,19 +22,19 @@ function StepFour ({img, title}) {
 
         <div className="absolute left-[394px] right-[12px] top-[12px]">
           <div className="flex gap-2">
-            <button onClick={() => downloadGif(img, title)} className="bg-clear-gray grid place-content-center h-[32px] w-[32px] rounded-[6px] hover:bg-light-gray" >
+            <button onClick={() => downloadGif()} className="bg-clear-gray grid place-content-center h-[32px] w-[32px] rounded-[6px] hover:bg-light-gray" >
               <span className="material-symbols-outlined">
                 download
               </span>
             </button>
-            <button className="bg-clear-gray grid place-content-center h-[32px] w-[32px] rounded-[6px] hover:bg-light-gray" >
+            <button onClick={() => navigator.clipboard.writeText(link)} className="bg-clear-gray grid place-content-center h-[32px] w-[32px] rounded-[6px] hover:bg-light-gray" title={link} >
               <span className="material-symbols-outlined">
-                link  
+                link
               </span>
             </button>
-          </div> 
+          </div>
         </div>
-        
+
         <div className="absolute left-[123px] top-[127px]">
           <div className="flex items-center justify-center flex-col">
             <img className="h-[13px] w=[18px] mb-[14px]" src={check} alt="loading" />

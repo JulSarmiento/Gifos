@@ -6,6 +6,11 @@ const RecordProvider = ({ children }) => {
   const record = useRef();
   const [isRecording, setIsRecording] = useState(true);
   const [blob, setblob] = useState(null);
+  // const [myGifs, setMyGifs] = useState(JSON.parse(localStorage.getItem('myGifs') || '[]'));
+
+  
+
+  const gifo = useRef({ link: null });
 
   const startRecord = () => {
     setIsRecording(true);
@@ -17,23 +22,21 @@ const RecordProvider = ({ children }) => {
     setIsRecording(false);
     record.current.stopRecording(() => {
       setblob(record.current.getBlob());
-      console.log("Terminada la grabacion", record.current.getBlob());
+      console.log("finalizar grabacion.");
     });
-    console.log("finalizar grabacion.");
   };
 
   const saveRecord = () => {
     let form = new FormData();
-    form.append('file', blob, 'myGif.gif');
-    console.log('gifo guardado', form.get('file'));
+    form.append("file", blob, "myGif.gif");
+    console.log("gifo guardado", form.get("file"));
 
     return postGifo(form);
-  }
+  };
 
   const setRecord = (instance) => {
     record.current = instance;
   };
-
 
   return (
     <RecordContext.Provider
@@ -42,7 +45,8 @@ const RecordProvider = ({ children }) => {
         setRecord,
         startRecord,
         stopRecord,
-        saveRecord
+        saveRecord,
+        gifo,
       }}
     >
       {children}
