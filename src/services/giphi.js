@@ -27,3 +27,13 @@ export const getSearch = async (term, offset = 0) => {
   const json = await res.json();
   return json
 }
+
+//  Upload
+export const postGifo = async (form) => {
+  const res = await fetch(`https://upload.giphy.com/v1/gifs?api_key=${Config.APIKEY}&username=JulSarmiento&file=${form}`, {
+    method: "POST",
+    body: form,
+  })
+  const json = await res.json();
+  return json
+}

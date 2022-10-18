@@ -15,9 +15,11 @@ import StepTwo from "../components/steps/stepTwo";
 import StepThree from "../components/steps/StepThree";
 import StepCero from "../components/steps/stepCero";
 import RecordContext from "../contexts/recordContext";
+import ReCapture from "../components/reCapture";
+import StepFour from "../components/steps/stepFour";
 
 function CreateGifo() {
-  const { startRecord, stopRecord } = useContext(RecordContext);
+  const { startRecord, stopRecord, saveRecord } = useContext(RecordContext);
   const [theme] = useContext(ThemeContext);
   const [step, setStep] = useState(0);
 
@@ -31,12 +33,18 @@ function CreateGifo() {
     });
   };
 
-  const saveAndUpLoad = () => {
+  const saveAndUpLoad = async () => {
+    setStep(5);
     console.log("Guardando y subiendo gifo");
-  };
-
-  const restartRecord = () => {
-    console.log("Volver a grabar gifo");
+    try{
+      const response = await saveRecord();
+      console.log('response', response);
+      setStep(6);
+      return response.data.id
+    }
+    catch (err){
+      console.log('Archivo no se pudo subir');
+    }
   };
 
   const onRecord = () => {
@@ -47,7 +55,11 @@ function CreateGifo() {
   const onFinish = () => {
     stopRecord();
     setStep(4);
-    // hago lo que tenga que hacer
+  }
+
+  const onReCapture = () => {
+    console.log('no quiero hacer lo que pides')
+    setStep(2)
   }
 
   const steps = [
@@ -79,30 +91,25 @@ function CreateGifo() {
       component: <StepTwo />
     },
     {
-      textBtn: "-",
+      textBtn: "SUBIR GIFO",
       step: 2,
       onClick: saveAndUpLoad,
-      textoAdiconal: <p>Repetir captura</p>,
+      textoAdiconal: <ReCapture onClick={onReCapture}/>,
       component: <StepTwo />
     },
     {
-      textBtn: "SUBIR GIFO",
-      step: 2,
-      onClick: null,
-      textoAdiconal: restartRecord,
-
-    },
-    {
       textBtn: "",
       step: 3,
-      onClick: saveAndUpLoad,
+      onClick: null,
       textoAdiconal: null,
+      component: <StepThree/>
     },
     {
       textBtn: "",
       step: 3,
       onClick: null,
       textoAdiconal: null,
+      component: <StepFour/>
     },
   ];
 
@@ -180,18 +187,6 @@ function CreateGifo() {
           steps[step].textoAdiconal || <div className="w-[150px]" />
         }
 
-
-        {/* {btn === 1 || btn === 0 ? (
-            <div className="w-[150px]" />
-          ) : btn === 2 ? (
-            <Chronomether secs={(new Date().getTime() - dataStarted) / 1000} />
-          ) : btn === 3 ? (
-            <p className="text-purple text-[15px] font-montserrat font-bold tracking-normal uppercase hover:underline underline-offset-8 decoration-2 decoration-cian dark:text-white">
-              Repetir captura
-            </p>
-          ) : (
-            ""
-          )} */}
       </div>
 
       <div className="mx-auto mt-[25px] w-[796px] border-b border-4 text-purple dark:text-cian "></div>

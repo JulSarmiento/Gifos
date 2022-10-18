@@ -5,21 +5,10 @@ import RecordContext from "../../contexts/recordContext";
 
 function StepTwo() {
 
-  const { setRecord, isRecording } = useContext(RecordContext);
+  const { setRecord} = useContext(RecordContext);
   const [stream, setStream] = useState(null);
-  // const [blob, setBlob] = useState(null);
   const videoRef = useRef();
   const [error, setError] = useState(null);
-
-  // const handlerStop = () => {
-  //   recordRef.current.stopRecording(() => {
-  //     setBlob(recordRef.current.getBlob());
-  //   });
-  // }
-
-  // const handlerSave = () => {
-  //   invokeSaveAsDialog(blob);
-  // }
 
   useEffect(() => {
     navigator.mediaDevices.getUserMedia({
@@ -31,8 +20,6 @@ function StepTwo() {
       audio: false,
     }).then(mediaStream => {
       setRecord(new RecordRTC(mediaStream, { type: 'gif' }));
-
-      // recordRef.current.startRecording();
       setStream(mediaStream);
     }).catch(setError);
   }, [setRecord]);
@@ -44,12 +31,6 @@ function StepTwo() {
 
     videoRef.current.srcObject = stream;
   }, [stream, videoRef]);
-
-
-  // useEffect(() => {
-  //   if (!isRecording) {
-  //   }
-  // }, [isRecording]);
 
   if (error) {
     console.log("Error recording", error);
